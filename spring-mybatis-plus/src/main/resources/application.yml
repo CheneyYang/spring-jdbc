@@ -1,0 +1,25 @@
+
+
+#配置数据源
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:mysql://192.168.3.23:3307/ldd_saas
+    username: root
+    password: My123456
+    hikari:
+      data-source-properties:
+        serverTimezone: Asia/Shanghai
+        characterEncoding: utf8
+        useSSL: false
+
+
+
+
+
+mybatis-plus:
+  type-handlers-package: com.iooiee.**
+#  mapper-locations: classpath:com/iooiee/mappers/*.xml
+
+server:
+  port: 9999

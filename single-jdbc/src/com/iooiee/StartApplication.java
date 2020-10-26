@@ -17,6 +17,7 @@ public class StartApplication {
 
     public static void main(String[] args) {
         try {
+            //加载驱动 -> 获取链接 -> PreparedStatement 运行SQL
             Class.forName("com.mysql.jdbc.Driver");
             Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             query(connection, "1");
