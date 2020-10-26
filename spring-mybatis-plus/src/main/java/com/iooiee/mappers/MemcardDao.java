@@ -13,4 +13,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface MemcardDao extends BaseMapper<MemberCardProduct> {
 //    IPage<MemberCardProduct> queryAll(MemberCardProduct memberCardProduct);
+
+
 }

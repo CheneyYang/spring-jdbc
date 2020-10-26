@@ -14,4 +14,5 @@ import com.iooiee.entity.MemberCardProduct;
 public interface MemcardService {
 
     IPage<MemberCardProduct> searchMemcard(MemcardPageModel memcardPageModel);
+//    IPage<MemberCardProduct> searchMemcardByParam(MemcardPageModel memcardPageModel);
 }

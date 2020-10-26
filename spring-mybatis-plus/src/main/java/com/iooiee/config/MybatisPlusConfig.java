@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * Description:
- *
+ *  MybatisPlus 分页过滤器
  * @Author: Yanggc
  * DateTime: 10/26 19:08
  */

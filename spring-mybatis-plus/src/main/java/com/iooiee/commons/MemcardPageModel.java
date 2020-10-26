@@ -1,5 +1,6 @@
 package com.iooiee.commons;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,7 +14,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class MemcardPageModel {
+public class MemcardPageModel{
 
     private Long clubId;
 

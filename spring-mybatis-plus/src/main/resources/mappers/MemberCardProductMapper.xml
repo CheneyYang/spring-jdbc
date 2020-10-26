@@ -110,7 +110,8 @@
     select  * from saas_membercard_porduct
   </select>
 
-<!--  <select id="queryAll" resultType="com.iooiee.entity.MemberCardProduct">-->
+
+  <!--  <select id="queryAll" resultType="com.iooiee.entity.MemberCardProduct">-->
 <!--    select-->
 <!--    <include refid="Base_Column_List"/>-->
 <!--    from-->
