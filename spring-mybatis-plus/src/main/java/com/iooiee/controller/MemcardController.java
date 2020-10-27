@@ -26,13 +26,11 @@ public class MemcardController {
     @PostMapping("/search/onsale")
     public PageResult onsaleMembercardList(@RequestBody MemcardPageModel memberCardModel){
         Page<MemberCardProduct> memberCardProductPage = memcardService.searchMemcard(memberCardModel);
-
+        return PageResult.success(memberCardProductPage);
+    }
+//        return PageResult.failure("失败");
 //        PageResult<MemberCardProduct> memberCardProductPageResult = new PageResult<>(memberCardProductPage);
 //        return PageResult.success(memberCardProductPage);
-
-        return PageResult.failure("失败");
-    }
-
     /**
      * 分页自定义返回参数
      * @param memberCardModel

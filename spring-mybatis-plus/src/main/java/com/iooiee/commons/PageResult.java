@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 
 /**
  * Description:
+ *  Mybatis-plus 分页条件结果二次封装
+ *
  *
  * @Author: Yanggc
  * DateTime: 10/12 12:24
@@ -45,14 +47,6 @@ public class PageResult<T> {
         this.currPage = 1L;
     }
 
-//    public PageResult(Page<T> page) {
-//        this.data = page.getRecords();
-//        this.currPage = page.getCurrent();
-//        this.total = page.getTotal();
-//        this.pageSize = page.getSize();
-//    }
-
-
     public static <T> PageResult<T> success(Page<T> page) {
         PageResult<Object> pageResult = new PageResult<>();
         pageResult.setResultCode(ResultCodeEnum.SUCCESS);
@@ -80,14 +74,15 @@ public class PageResult<T> {
 
 
     // 自定义返回数据类型
-    public PageResult<T> data(T data) {
+    public PageResult<T> data(Object data) {
         this.setData(data);
         return this;
     }
 
 
-
-    //getter/setter
+    /**
+     *     getter setter
+     */
     public Integer getCode() {
         return code;
     }
@@ -100,8 +95,9 @@ public class PageResult<T> {
         return msg;
     }
 
-    public void setMsg(String msg) {
+    public PageResult<T> setMsg(String msg) {
         this.msg = msg;
+        return this;
     }
 
     public Object getData() {
@@ -116,7 +112,7 @@ public class PageResult<T> {
         return total;
     }
 
-    public void setTotal(Long total) {
+    private void setTotal(Long total) {
         this.total = total;
     }
 
@@ -124,7 +120,7 @@ public class PageResult<T> {
         return pageSize;
     }
 
-    public void setPageSize(Long pageSize) {
+    private void setPageSize(Long pageSize) {
         this.pageSize = pageSize;
     }
 
@@ -132,7 +128,7 @@ public class PageResult<T> {
         return totalPages;
     }
 
-    public void setTotalPages(Long totalPages) {
+    private void setTotalPages(Long totalPages) {
         this.totalPages = totalPages;
     }
 
@@ -140,7 +136,7 @@ public class PageResult<T> {
         return currPage;
     }
 
-    public void setCurrPage(Long currPage) {
+    private void setCurrPage(Long currPage) {
         this.currPage = currPage;
     }
 }
