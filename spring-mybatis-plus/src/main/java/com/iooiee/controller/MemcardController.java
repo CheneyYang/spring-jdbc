@@ -1,7 +1,8 @@
 package com.iooiee.controller;
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.iooiee.commons.MemcardPageModel;
+import com.iooiee.commons.PageResult;
 import com.iooiee.entity.MemberCardProduct;
 import com.iooiee.service.MemcardService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,15 +18,31 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class MemcardController {
-
     @Autowired
     MemcardService memcardService;
-
     /**
-     * 门店上架的卡库
+     * 分页查询
      */
     @PostMapping("/search/onsale")
-    public IPage<MemberCardProduct> onsaleMembercardList(@RequestBody MemcardPageModel memberCardModel){
-        return memcardService.searchMemcard(memberCardModel);
+    public PageResult onsaleMembercardList(@RequestBody MemcardPageModel memberCardModel){
+        Page<MemberCardProduct> memberCardProductPage = memcardService.searchMemcard(memberCardModel);
+
+//        PageResult<MemberCardProduct> memberCardProductPageResult = new PageResult<>(memberCardProductPage);
+//        return PageResult.success(memberCardProductPage);
+
+        return PageResult.failure("失败");
+    }
+
+    /**
+     * 分页自定义返回参数
+     * @param memberCardModel
+     * @return
+     */
+    @PostMapping("/search/pageResult")
+    public String pageResult(@RequestBody MemcardPageModel memberCardModel){
+
+        Page<MemberCardProduct> memberCardProductPage;
+//        return PageResult.success();
+        return "123132";
     }
 }

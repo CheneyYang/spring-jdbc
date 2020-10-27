@@ -14,5 +14,8 @@ import org.springframework.stereotype.Repository;
 public interface MemcardDao extends BaseMapper<MemberCardProduct> {
 //    IPage<MemberCardProduct> queryAll(MemberCardProduct memberCardProduct);
 
-
+//    List<MemberCardProduct> getListPage(Page page, @Param("clubId") Long clubId, @Param("cardName") String cardName, @Param("cardType") Integer cardType,
+//                                        @Param("supportStoreType") Integer supportStoreType, @Param("appSale") Integer appSale,
+//                                        @Param("createStoreId") Long createStoreId, @Param("createStoreName") String createStoreName,
+//                                        @Param("createUser") String createUser, @Param("onsale") Integer onsale, @Param("sellStatus") Integer sellStatus);}
 }

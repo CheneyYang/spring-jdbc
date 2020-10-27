@@ -1,6 +1,6 @@
 package com.iooiee.service;
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.iooiee.commons.MemcardPageModel;
 import com.iooiee.entity.MemberCardProduct;
 
@@ -13,6 +13,5 @@ import com.iooiee.entity.MemberCardProduct;
 
 public interface MemcardService {
 
-    IPage<MemberCardProduct> searchMemcard(MemcardPageModel memcardPageModel);
-//    IPage<MemberCardProduct> searchMemcardByParam(MemcardPageModel memcardPageModel);
+    Page<MemberCardProduct> searchMemcard(MemcardPageModel memcardPageModel);
 }

@@ -1,6 +1,5 @@
 package com.iooiee.commons;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

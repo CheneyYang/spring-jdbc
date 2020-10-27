@@ -1,7 +1,5 @@
 package com.iooiee.service.impl;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.iooiee.commons.MemcardPageModel;
 import com.iooiee.entity.MemberCardProduct;
@@ -31,10 +29,10 @@ public class MemcardServiceImpl implements MemcardService {
      */
 
     @Override
-    public IPage<MemberCardProduct> searchMemcard(MemcardPageModel memcardPageModel) {
-        IPage<MemberCardProduct> currPage = new Page<>(memcardPageModel.getPageNum(), memcardPageModel.getPageSize());
+    public Page<MemberCardProduct> searchMemcard(MemcardPageModel memcardPageModel) {
+        Page<MemberCardProduct> currPage = new Page<>(memcardPageModel.getPageNum(), memcardPageModel.getPageSize());
 
-        IPage<MemberCardProduct> memberCardProductIPage = memcardDao.selectPage(currPage, null);
+        Page<MemberCardProduct> memberCardProductIPage = memcardDao.selectPage(currPage, null);
         List<MemberCardProduct> records = memberCardProductIPage.getRecords();
         for(MemberCardProduct  currMemberCardProduct :  records){
             System.out.println(currMemberCardProduct.toString());
@@ -42,23 +40,14 @@ public class MemcardServiceImpl implements MemcardService {
         return memberCardProductIPage;
     }
 
-    /**
-     * 条件查询
-     * @param memcardPageModel
-     * @return
-     */
 //    @Override
-//    public IPage<MemberCardProduct> searchMemcardByParam(MemcardPageModel memcardPageModel) {
-//
-//        Page<MemberCardProduct> currPage = new Page<>(memcardPageModel.getPageNum(), memcardPageModel.getPageSize());
-//
-//        QueryWrapper<MemcardPageModel> qw = new QueryWrapper<>();
-//
-//        qw.eq("cardType", memcardPageModel.getCardType());
-//
-//
-//        return memcardDao.selectPage(currPage, qw);
+//    public PageResult<MemberCardProduct> getListPage(MemcardPageModel memberCardModel) {
+//        memcardDao.getListPage(page, memberCardModel.getClubId(), memberCardModel.getCardName(),
+//                memberCardModel.getCardType(), memberCardModel.getSupportStoreType(), memberCardModel.getAppSale(), memberCardModel.getCreateStoreId(),
+//                memberCardModel.getCreateStoreName(), memberCardModel.getCreateUser(), memberCardModel.getOnsale(), memberCardModel.getSellStatus());
 //    }
+
+
 
 
 }

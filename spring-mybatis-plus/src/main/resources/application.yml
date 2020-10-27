@@ -1,4 +1,5 @@
-
+server:
+  port: 9999
 
 #配置数据源
 spring:
@@ -19,7 +20,7 @@ spring:
 
 mybatis-plus:
   type-handlers-package: com.iooiee.**
-#  mapper-locations: classpath:com/iooiee/mappers/*.xml
 
-server:
-  port: 9999
+logging:
+  level:
+    com.iooiee: debug
