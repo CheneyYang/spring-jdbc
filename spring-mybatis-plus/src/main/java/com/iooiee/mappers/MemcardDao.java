@@ -1,8 +1,10 @@
 package com.iooiee.mappers;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.iooiee.entity.MemberCardProduct;
 import org.springframework.stereotype.Repository;
+
 
 /**
  * Description:
@@ -12,7 +14,7 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface MemcardDao extends BaseMapper<MemberCardProduct> {
-//    IPage<MemberCardProduct> queryAll(MemberCardProduct memberCardProduct);
+    Page<MemberCardProduct> queryAll(MemberCardProduct memberCardProduct);
 
 //    List<MemberCardProduct> getListPage(Page page, @Param("clubId") Long clubId, @Param("cardName") String cardName, @Param("cardType") Integer cardType,
 //                                        @Param("supportStoreType") Integer supportStoreType, @Param("appSale") Integer appSale,

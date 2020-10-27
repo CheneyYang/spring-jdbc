@@ -1,5 +1,6 @@
 package com.iooiee.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.iooiee.commons.MemcardPageModel;
 import com.iooiee.entity.MemberCardProduct;
@@ -38,6 +39,25 @@ public class MemcardServiceImpl implements MemcardService {
             System.out.println(currMemberCardProduct.toString());
         }
         return memberCardProductIPage;
+    }
+
+    @Override
+    public Page<MemberCardProduct> searchCommData(MemcardPageModel memberCardModel) {
+        Page<MemberCardProduct> currPage = new Page<>(memberCardModel.getPageNum(), memberCardModel.getPageSize());
+//
+        QueryWrapper<MemberCardProduct> memcardPageQueryWrapper = new QueryWrapper<>();
+        memcardPageQueryWrapper.eq("id", 77);
+
+
+        Page<MemberCardProduct> memberCardProductPage = memcardDao.selectPage(currPage, memcardPageQueryWrapper);
+
+
+//        Page<MemberCardProduct> memberCardProductIPage = memcardDao.selectPage(currPage, null);
+//        List<MemberCardProduct> records = memberCardProductIPage.getRecords();
+//        for(MemberCardProduct  currMemberCardProduct :  records){
+//            System.out.println(currMemberCardProduct.toString());
+//        }
+        return memberCardProductPage;
     }
 
 //    @Override

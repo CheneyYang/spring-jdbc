@@ -28,9 +28,7 @@ public class MemcardController {
         Page<MemberCardProduct> memberCardProductPage = memcardService.searchMemcard(memberCardModel);
         return PageResult.success(memberCardProductPage);
     }
-//        return PageResult.failure("失败");
-//        PageResult<MemberCardProduct> memberCardProductPageResult = new PageResult<>(memberCardProductPage);
-//        return PageResult.success(memberCardProductPage);
+
     /**
      * 分页自定义返回参数
      * @param memberCardModel
@@ -39,8 +37,30 @@ public class MemcardController {
     @PostMapping("/search/pageResult")
     public String pageResult(@RequestBody MemcardPageModel memberCardModel){
 
+
+
+
+
         Page<MemberCardProduct> memberCardProductPage;
-//        return PageResult.success();
+
         return "123132";
     }
+
+
+    /**
+     * PageResult测试
+     */
+    @PostMapping("/search/searchCommData")
+    public PageResult searchCommData(@RequestBody MemcardPageModel memberCardModel){
+        if (memberCardModel == null) {
+            memberCardModel = new MemcardPageModel();
+        }
+        //添加可售并且在售状态
+        memberCardModel.setSellStatus(1);
+        memberCardModel.setOnsale(1);
+        Page<MemberCardProduct> memberCardProductPage = memcardService.searchCommData(memberCardModel);
+        return PageResult.success(memberCardProductPage);
+    }
+
+
 }
