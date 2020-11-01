@@ -5,9 +5,14 @@ server:
 spring:
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:mysql://192.168.3.23:3307/ldd_saas
+#    NAS数据库
+    url: jdbc:mysql://192.168.100.10:23306/ldd_saas
     username: root
-    password: My123456
+    password: yang517777346.
+
+#    url: jdbc:mysql://192.168.3.23:3307/ldd_saas
+#    username: root
+#    password: My123456
     hikari:
       data-source-properties:
         serverTimezone: Asia/Shanghai

@@ -52,6 +52,8 @@ public class MemcardController {
      */
     @PostMapping("/search/searchCommData")
     public PageResult searchCommData(@RequestBody MemcardPageModel memberCardModel){
+
+
         if (memberCardModel == null) {
             memberCardModel = new MemcardPageModel();
         }

@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.iooiee.mappers.MemcardBaseMapper" >
+  <resultMap id="BaseResultMap" type="com.iooiee.entity.MemcardBase" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="create_club_id" property="createClubId" jdbcType="BIGINT" />
+    <result column="create_club_name" property="createClubName" jdbcType="VARCHAR" />
+    <result column="create_store_id" property="createStoreId" jdbcType="BIGINT" />
+    <result column="create_store_name" property="createStoreName" jdbcType="VARCHAR" />
+    <result column="create_datetime" property="createDatetime" jdbcType="TIMESTAMP" />
+    <result column="create_user_id" property="createUserId" jdbcType="BIGINT" />
+    <result column="create_user_name" property="createUserName" jdbcType="VARCHAR" />
+    <result column="card_name" property="cardName" jdbcType="VARCHAR" />
+    <result column="card_desc" property="cardDesc" jdbcType="VARCHAR" />
+    <result column="card_type" property="cardType" jdbcType="INTEGER" />
+    <result column="sale_max_date" property="saleMaxDate" jdbcType="TIMESTAMP" />
+    <result column="sale_min_date" property="saleMinDate" jdbcType="TIMESTAMP" />
+    <result column="entrance_times" property="entranceTimes" jdbcType="INTEGER" />
+    <result column="max_gift_entrance" property="maxGiftEntrance" jdbcType="INTEGER" />
+    <result column="valid_day" property="validDay" jdbcType="INTEGER" />
+    <result column="max_gift_days" property="maxGiftDays" jdbcType="INTEGER" />
+    <result column="allowed_leave" property="allowedLeave" jdbcType="INTEGER" />
+    <result column="member_limit" property="memberLimit" jdbcType="INTEGER" />
+    <result column="support_store_type" property="supportStoreType" jdbcType="INTEGER" />
+    <result column="support_store_ids" property="supportStoreIds" jdbcType="VARCHAR" />
+    <result column="reference_price" property="referencePrice" jdbcType="DECIMAL" />
+    <result column="reference_discount" property="referenceDiscount" jdbcType="INTEGER" />
+    <result column="editable" property="editable" jdbcType="INTEGER" />
+    <result column="extra_params" property="extraParams" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, create_club_id, create_club_name, create_store_id, create_store_name, create_datetime, 
+    create_user_id, create_user_name, card_name, card_desc, card_type, sale_max_date, 
+    sale_min_date, entrance_times, max_gift_entrance, valid_day, max_gift_days, allowed_leave, 
+    member_limit, support_store_type, support_store_ids, reference_price, reference_discount, 
+    editable, extra_params
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from saas_memcard_base
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+
+
+
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from saas_memcard_base
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.iooiee.entity.MemcardBase" >
+    <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into saas_memcard_base (create_club_id, create_club_name, create_store_id, 
+      create_store_name, create_datetime, create_user_id, 
+      create_user_name, card_name, card_desc, 
+      card_type, sale_max_date, sale_min_date, 
+      entrance_times, max_gift_entrance, valid_day, 
+      max_gift_days, allowed_leave, member_limit, 
+      support_store_type, support_store_ids, reference_price, 
+      reference_discount, editable, extra_params
+      )
+    values (#{createClubId,jdbcType=BIGINT}, #{createClubName,jdbcType=VARCHAR}, #{createStoreId,jdbcType=BIGINT}, 
+      #{createStoreName,jdbcType=VARCHAR}, #{createDatetime,jdbcType=TIMESTAMP}, #{createUserId,jdbcType=BIGINT}, 
+      #{createUserName,jdbcType=VARCHAR}, #{cardName,jdbcType=VARCHAR}, #{cardDesc,jdbcType=VARCHAR}, 
+      #{cardType,jdbcType=INTEGER}, #{saleMaxDate,jdbcType=TIMESTAMP}, #{saleMinDate,jdbcType=TIMESTAMP}, 
+      #{entranceTimes,jdbcType=INTEGER}, #{maxGiftEntrance,jdbcType=INTEGER}, #{validDay,jdbcType=INTEGER}, 
+      #{maxGiftDays,jdbcType=INTEGER}, #{allowedLeave,jdbcType=INTEGER}, #{memberLimit,jdbcType=INTEGER}, 
+      #{supportStoreType,jdbcType=INTEGER}, #{supportStoreIds,jdbcType=VARCHAR}, #{referencePrice,jdbcType=DECIMAL}, 
+      #{referenceDiscount,jdbcType=INTEGER}, #{editable,jdbcType=INTEGER}, #{extraParams,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.iooiee.entity.MemcardBase" >
+    <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into saas_memcard_base
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="createClubId != null" >
+        create_club_id,
+      </if>
+      <if test="createClubName != null" >
+        create_club_name,
+      </if>
+      <if test="createStoreId != null" >
+        create_store_id,
+      </if>
+      <if test="createStoreName != null" >
+        create_store_name,
+      </if>
+      <if test="createDatetime != null" >
+        create_datetime,
+      </if>
+      <if test="createUserId != null" >
+        create_user_id,
+      </if>
+      <if test="createUserName != null" >
+        create_user_name,
+      </if>
+      <if test="cardName != null" >
+        card_name,
+      </if>
+      <if test="cardDesc != null" >
+        card_desc,
+      </if>
+      <if test="cardType != null" >
+        card_type,
+      </if>
+      <if test="saleMaxDate != null" >
+        sale_max_date,
+      </if>
+      <if test="saleMinDate != null" >
+        sale_min_date,
+      </if>
+      <if test="entranceTimes != null" >
+        entrance_times,
+      </if>
+      <if test="maxGiftEntrance != null" >
+        max_gift_entrance,
+      </if>
+      <if test="validDay != null" >
+        valid_day,
+      </if>
+      <if test="maxGiftDays != null" >
+        max_gift_days,
+      </if>
+      <if test="allowedLeave != null" >
+        allowed_leave,
+      </if>
+      <if test="memberLimit != null" >
+        member_limit,
+      </if>
+      <if test="supportStoreType != null" >
+        support_store_type,
+      </if>
+      <if test="supportStoreIds != null" >
+        support_store_ids,
+      </if>
+      <if test="referencePrice != null" >
+        reference_price,
+      </if>
+      <if test="referenceDiscount != null" >
+        reference_discount,
+      </if>
+      <if test="editable != null" >
+        editable,
+      </if>
+      <if test="extraParams != null" >
+        extra_params,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="createClubId != null" >
+        #{createClubId,jdbcType=BIGINT},
+      </if>
+      <if test="createClubName != null" >
+        #{createClubName,jdbcType=VARCHAR},
+      </if>
+      <if test="createStoreId != null" >
+        #{createStoreId,jdbcType=BIGINT},
+      </if>
+      <if test="createStoreName != null" >
+        #{createStoreName,jdbcType=VARCHAR},
+      </if>
+      <if test="createDatetime != null" >
+        #{createDatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUserId != null" >
+        #{createUserId,jdbcType=BIGINT},
+      </if>
+      <if test="createUserName != null" >
+        #{createUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="cardName != null" >
+        #{cardName,jdbcType=VARCHAR},
+      </if>
+      <if test="cardDesc != null" >
+        #{cardDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="cardType != null" >
+        #{cardType,jdbcType=INTEGER},
+      </if>
+      <if test="saleMaxDate != null" >
+        #{saleMaxDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="saleMinDate != null" >
+        #{saleMinDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="entranceTimes != null" >
+        #{entranceTimes,jdbcType=INTEGER},
+      </if>
+      <if test="maxGiftEntrance != null" >
+        #{maxGiftEntrance,jdbcType=INTEGER},
+      </if>
+      <if test="validDay != null" >
+        #{validDay,jdbcType=INTEGER},
+      </if>
+      <if test="maxGiftDays != null" >
+        #{maxGiftDays,jdbcType=INTEGER},
+      </if>
+      <if test="allowedLeave != null" >
+        #{allowedLeave,jdbcType=INTEGER},
+      </if>
+      <if test="memberLimit != null" >
+        #{memberLimit,jdbcType=INTEGER},
+      </if>
+      <if test="supportStoreType != null" >
+        #{supportStoreType,jdbcType=INTEGER},
+      </if>
+      <if test="supportStoreIds != null" >
+        #{supportStoreIds,jdbcType=VARCHAR},
+      </if>
+      <if test="referencePrice != null" >
+        #{referencePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="referenceDiscount != null" >
+        #{referenceDiscount,jdbcType=INTEGER},
+      </if>
+      <if test="editable != null" >
+        #{editable,jdbcType=INTEGER},
+      </if>
+      <if test="extraParams != null" >
+        #{extraParams,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.iooiee.entity.MemcardBase" >
+    update saas_memcard_base
+    <set >
+      <if test="createClubId != null" >
+        create_club_id = #{createClubId,jdbcType=BIGINT},
+      </if>
+      <if test="createClubName != null" >
+        create_club_name = #{createClubName,jdbcType=VARCHAR},
+      </if>
+      <if test="createStoreId != null" >
+        create_store_id = #{createStoreId,jdbcType=BIGINT},
+      </if>
+      <if test="createStoreName != null" >
+        create_store_name = #{createStoreName,jdbcType=VARCHAR},
+      </if>
+      <if test="createDatetime != null" >
+        create_datetime = #{createDatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUserId != null" >
+        create_user_id = #{createUserId,jdbcType=BIGINT},
+      </if>
+      <if test="createUserName != null" >
+        create_user_name = #{createUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="cardName != null" >
+        card_name = #{cardName,jdbcType=VARCHAR},
+      </if>
+      <if test="cardDesc != null" >
+        card_desc = #{cardDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="cardType != null" >
+        card_type = #{cardType,jdbcType=INTEGER},
+      </if>
+      <if test="saleMaxDate != null" >
+        sale_max_date = #{saleMaxDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="saleMinDate != null" >
+        sale_min_date = #{saleMinDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="entranceTimes != null" >
+        entrance_times = #{entranceTimes,jdbcType=INTEGER},
+      </if>
+      <if test="maxGiftEntrance != null" >
+        max_gift_entrance = #{maxGiftEntrance,jdbcType=INTEGER},
+      </if>
+      <if test="validDay != null" >
+        valid_day = #{validDay,jdbcType=INTEGER},
+      </if>
+      <if test="maxGiftDays != null" >
+        max_gift_days = #{maxGiftDays,jdbcType=INTEGER},
+      </if>
+      <if test="allowedLeave != null" >
+        allowed_leave = #{allowedLeave,jdbcType=INTEGER},
+      </if>
+      <if test="memberLimit != null" >
+        member_limit = #{memberLimit,jdbcType=INTEGER},
+      </if>
+      <if test="supportStoreType != null" >
+        support_store_type = #{supportStoreType,jdbcType=INTEGER},
+      </if>
+      <if test="supportStoreIds != null" >
+        support_store_ids = #{supportStoreIds,jdbcType=VARCHAR},
+      </if>
+      <if test="referencePrice != null" >
+        reference_price = #{referencePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="referenceDiscount != null" >
+        reference_discount = #{referenceDiscount,jdbcType=INTEGER},
+      </if>
+      <if test="editable != null" >
+        editable = #{editable,jdbcType=INTEGER},
+      </if>
+      <if test="extraParams != null" >
+        extra_params = #{extraParams,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.iooiee.entity.MemcardBase" >
+    update saas_memcard_base
+    set create_club_id = #{createClubId,jdbcType=BIGINT},
+      create_club_name = #{createClubName,jdbcType=VARCHAR},
+      create_store_id = #{createStoreId,jdbcType=BIGINT},
+      create_store_name = #{createStoreName,jdbcType=VARCHAR},
+      create_datetime = #{createDatetime,jdbcType=TIMESTAMP},
+      create_user_id = #{createUserId,jdbcType=BIGINT},
+      create_user_name = #{createUserName,jdbcType=VARCHAR},
+      card_name = #{cardName,jdbcType=VARCHAR},
+      card_desc = #{cardDesc,jdbcType=VARCHAR},
+      card_type = #{cardType,jdbcType=INTEGER},
+      sale_max_date = #{saleMaxDate,jdbcType=TIMESTAMP},
+      sale_min_date = #{saleMinDate,jdbcType=TIMESTAMP},
+      entrance_times = #{entranceTimes,jdbcType=INTEGER},
+      max_gift_entrance = #{maxGiftEntrance,jdbcType=INTEGER},
+      valid_day = #{validDay,jdbcType=INTEGER},
+      max_gift_days = #{maxGiftDays,jdbcType=INTEGER},
+      allowed_leave = #{allowedLeave,jdbcType=INTEGER},
+      member_limit = #{memberLimit,jdbcType=INTEGER},
+      support_store_type = #{supportStoreType,jdbcType=INTEGER},
+      support_store_ids = #{supportStoreIds,jdbcType=VARCHAR},
+      reference_price = #{referencePrice,jdbcType=DECIMAL},
+      reference_discount = #{referenceDiscount,jdbcType=INTEGER},
+      editable = #{editable,jdbcType=INTEGER},
+      extra_params = #{extraParams,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
